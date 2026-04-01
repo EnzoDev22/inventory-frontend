@@ -77,6 +77,25 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  edit(id:number, name:string, description:string){
+
+    const dialogRef = this.dialog.open(NewCategoryComponent, {
+      width: '450px',
+      data:{ id:id, name:name, description:description}
+    });
+
+    dialogRef.afterClosed().subscribe((result:any) => {
+        if(result == 1){
+          this.openSnackBar("Categoría actualizada exitosamente", "Exito");
+          this.getCategories();
+        }else if(result == 2){
+          this.openSnackBar("Error al actualizar la categoría", "Error");
+        }
+
+    });
+
+  }
+
 }
 
 export interface CategoryElement {
