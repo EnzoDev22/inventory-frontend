@@ -29,10 +29,7 @@ export class CategoryComponent implements OnInit {
   getCategories() : void{
     this.categoryService.getCategories()
       .subscribe( (data : any) => {
-
-        console.log("respuesta categories: ", data);
         this.processCategoriesResponse(data);
-      
       }, (error : any) => {
         console.error("Error: ", error)
       })
@@ -113,6 +110,21 @@ export class CategoryComponent implements OnInit {
 
     });
 
+  }
+
+  buscar(termino:string){
+    if(termino.length === 0){
+      return this.getCategories();
+    }
+
+    this.categoryService.getCategoryById(Number(termino))
+      .subscribe( (resp : any) => {
+        console.log(resp);
+        this.processCategoriesResponse(resp);
+      }, (error : any) => {
+        error.error.metadata[0].code == "01" ? this.openSnackBar("No se encontró la categoría", "Error") : this.openSnackBar("No se encontro la categoría", "Error");
+      }
+    );
   }
 
 }
