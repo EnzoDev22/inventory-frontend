@@ -43,4 +43,12 @@ export class ProductService {
     return this.http.delete(endpoint);
   }
 
+  /**
+   * search products by name
+   * @param name 
+   */
+  getProductsByName(name: string) {
+    const endpoint = `${base_url}/products/filter/${name}`;
+    return this.http.get(endpoint);
+  }
 }

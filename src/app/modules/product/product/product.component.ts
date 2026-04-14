@@ -122,6 +122,19 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  search(name: string){
+    if(name.length === 0){
+      return this.getProducts();
+    }else{
+      this.productService.getProductsByName(name)
+        .subscribe( (data : any) => {
+          this.processProductsResponse(data);
+        }, (error : any) => {
+          console.error("Error: ", error)
+        })
+    }
+  }
+
 }
 
 export interface ProductElement {
