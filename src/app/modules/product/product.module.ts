@@ -4,12 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
 import { CategoryComponent } from '../category/components/category/category.component';
 import { ProductComponent } from './product/product.component';
+import { NewProductComponent } from './new-product/new-product.component';
 
 
 
 @NgModule({
   declarations: [
-    ProductComponent
+    ProductComponent,
+    NewProductComponent
   ],
   imports: [
     CommonModule,
