@@ -45,7 +45,7 @@ export class ProductComponent implements OnInit {
       let listProducts = resp.productResponse.products;
       
       listProducts.forEach ((element : ProductElement) => {
-        element.category = element.category.name;
+        //element.category = element.category.name;
         element.picture = 'data:image/jpeg;base64,' + element.picture;
         dateProduct.push(element);
       });
@@ -75,6 +75,29 @@ export class ProductComponent implements OnInit {
   openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar>{
     return this.snackBar.open(message, action, {
       duration: 3000
+    });
+  }
+
+  edit(id: number,name: string,price: number,quantity: number,category: any) {
+    const dialogRef = this.dialog.open(NewProductComponent, {
+          width: '450px',
+          data:{
+            id: id,
+            name: name,
+            price: price,
+            quantity: quantity,
+            category: category
+          }
+        });
+    
+    dialogRef.afterClosed().subscribe((result:any) => {
+        if(result == 1){
+          this.openSnackBar("Producto actualizado exitosamente", "Exito");
+          this.getProducts();
+        }else if(result == 2){
+          this.openSnackBar("Error al actualizar el producto", "Error");
+        }
+
     });
   }
 

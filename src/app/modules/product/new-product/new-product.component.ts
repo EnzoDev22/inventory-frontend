@@ -34,7 +34,13 @@ export class NewProductComponent implements OnInit {
       category: ['', Validators.required],
       picture: ['', Validators.required]
     });
+
+    if(this.data != null){
+      this.updateForm(this.data);
+      this.estadoFormulario = "Editar"
+    }
   }
+
 
   onCancel() {
     this.dialogRef.close(3);
@@ -56,14 +62,28 @@ export class NewProductComponent implements OnInit {
     uploadImageData.append('categoryId', data.categoryId);
     uploadImageData.append('picture', data.picture, data.picture.name);
 
-    //call the service to save a product
-    this.productService.saveProduct(uploadImageData)
-      .subscribe( (response : any) => {
-        console.log("Producto guardado: ", response);
-        this.dialogRef.close(1);
-      }, (error : any) => {
-        console.error("Error: ", error)
-      });
+    if(this.data != null){
+      //call the service to update a product
+      this.productService.updateProduct(uploadImageData, this.data.id)
+        .subscribe( (response : any) => {
+          console.log("Producto actualizado: ", response);
+          this.dialogRef.close(1);
+        }, (error : any) => {
+          console.error("Error: ", error);
+          this.dialogRef.close(2);
+        });
+    }else{
+      //call the service to save a product
+      this.productService.saveProduct(uploadImageData)
+        .subscribe( (response : any) => {
+          console.log("Producto guardado: ", response);
+          this.dialogRef.close(1);
+        }, (error : any) => {
+          console.error("Error: ", error);
+          this.dialogRef.close(2);
+        });
+    }
+
 
   }
 
@@ -81,6 +101,17 @@ export class NewProductComponent implements OnInit {
     this.selectedFile = $event.target.files[0];
     this.nameImg = this.selectedFile.name;
   }
+
+  updateForm(data: any) {
+    this.productForm = this.fb.group({
+      name: [data.name, Validators.required],
+      price: [data.price, Validators.required],
+      quantity: [data.quantity, Validators.required],
+      category: [data.category.id, Validators.required],
+      picture: [data.picture, Validators.required]
+    });
+  }
+
 
 }
 
