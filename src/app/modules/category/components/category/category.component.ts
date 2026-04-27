@@ -6,6 +6,7 @@ import { NewCategoryComponent } from '../new-category/new-category.component';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { ConfirmComponent } from 'src/app/modules/shared/components/confirm/confirm.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { UtilService } from 'src/app/modules/shared/services/util.service';
 
 @Component({
   selector: 'app-category',
@@ -15,12 +16,16 @@ import { MatPaginator } from '@angular/material/paginator';
 
 export class CategoryComponent implements OnInit {
 
+  isAdmin:boolean = false;
   private categoryService = inject(CategoryService);
   public dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
+  private utilService = inject(UtilService);
 
   
   ngOnInit(): void {
+    this.isAdmin = this.utilService.isAdmin();
+    console.log("isAdmin: ", this.isAdmin);
     this.getCategories();
   }
 
