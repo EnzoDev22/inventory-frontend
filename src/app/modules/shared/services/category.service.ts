@@ -24,7 +24,6 @@ export class CategoryService {
   /**
    * save the categories
    */
-
   saveCategory(body:any){
     const endpoint = `${BASE_URL}/categories`;
     return this.http.post(endpoint, body);
@@ -46,9 +45,25 @@ export class CategoryService {
     return this.http.delete(endpoint);
   }
 
+  /**
+   * get category by id
+   * @param id 
+   * @returns 
+   */
   getCategoryById(id: number){
     const endpoint = `${BASE_URL}/categories/${id}`;
     return this.http.get(endpoint);
+  }
+
+  /**
+   * export categories to Excel
+   * @returns 
+   */
+  exportCategories(){
+    const endpoint = `${BASE_URL}/categories/export/excel`;
+    return this.http.get(endpoint, {
+      responseType: 'blob'
+    });
   }
 
 }
