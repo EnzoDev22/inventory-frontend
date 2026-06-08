@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-const base_url = "http://localhost:8080/api/v1";
+//const base_url = "http://localhost:8080/api/v1";
+const BASE_URL = 'http://spring-boot-app-497700.rj.r.appspot.com/api/v1';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ProductService {
    * get all the products
    */
   getProducts(){
-    const endpoint = `${base_url}/products`;
+    const endpoint = `${BASE_URL}/products`;
     return this.http.get(endpoint);
   }
 
@@ -23,7 +24,7 @@ export class ProductService {
    * @param body 
    */
   saveProduct(body: any){
-    const endpoint = `${base_url}/products`;
+    const endpoint = `${BASE_URL}/products`;
     return this.http.post(endpoint, body);
   }
 
@@ -31,7 +32,7 @@ export class ProductService {
    * update the product
    */
   updateProduct(body:any, id:any){
-    const endpoint = `${base_url}/products/${id}`;
+    const endpoint = `${BASE_URL}/products/${id}`;
     return this.http.put(endpoint, body);
   }
 
@@ -39,7 +40,7 @@ export class ProductService {
    * delete the product
    */
   deleteProduct(id: any) {
-    const endpoint = `${base_url}/products/${id}`;
+    const endpoint = `${BASE_URL}/products/${id}`;
     return this.http.delete(endpoint);
   }
 
@@ -48,7 +49,7 @@ export class ProductService {
    * @param name 
    */
   getProductsByName(name: string) {
-    const endpoint = `${base_url}/products/filter/${name}`;
+    const endpoint = `${BASE_URL}/products/filter/${name}`;
     return this.http.get(endpoint);
   }
 
@@ -57,7 +58,7 @@ export class ProductService {
    * @returns 
    */
   exportProducts(){
-    const endpoint = `${base_url}/products/export/excel`;
+    const endpoint = `${BASE_URL}/products/export/excel`;
     return this.http.get(endpoint, {
       responseType: 'blob'
     });
