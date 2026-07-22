@@ -1,5 +1,6 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {environment} from 'src/enviroments/enviroment.local';
 
 import { KeycloakAngularModule, KeycloakService } from "keycloak-angular";
 
@@ -13,8 +14,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
-        //url: 'http://localhost:8082/',
-        url: 'http://35.188.146.246:80/',
+        url: environment.keycloakUrl,
         realm: 'inventory',
         clientId: 'angular-client'
       },
