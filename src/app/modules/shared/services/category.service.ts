@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/enviroments/enviroment.local';
+import { environment } from 'src/environments/environment.local';
 
 const BASE_URL = environment.apiUrl;
 

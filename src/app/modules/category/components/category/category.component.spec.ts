@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MaterialModule } from '../../../shared/material.module';
+import { UtilService } from '../../../shared/services/util.service';
 import { CategoryComponent } from './category.component';
 
 describe('CategoryComponent', () => {
@@ -8,7 +12,18 @@ describe('CategoryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CategoryComponent]
+      imports: [
+        HttpClientTestingModule,
+        MaterialModule,
+        NoopAnimationsModule
+      ],
+      declarations: [CategoryComponent],
+      providers: [
+        {
+          provide: UtilService,
+          useValue: { isAdmin: () => false }
+        }
+      ]
     });
     fixture = TestBed.createComponent(CategoryComponent);
     component = fixture.componentInstance;

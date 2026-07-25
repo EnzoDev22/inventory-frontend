@@ -1,5 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MaterialModule } from '../../../shared/material.module';
 import { NewCategoryComponent } from './new-category.component';
 
 describe('NewCategoryComponent', () => {
@@ -7,8 +12,20 @@ describe('NewCategoryComponent', () => {
   let fixture: ComponentFixture<NewCategoryComponent>;
 
   beforeEach(() => {
+    const dialogRefSpy = jasmine.createSpyObj('MatDialogRef', ['close']);
+
     TestBed.configureTestingModule({
-      declarations: [NewCategoryComponent]
+      imports: [
+        HttpClientTestingModule,
+        MaterialModule,
+        NoopAnimationsModule,
+        ReactiveFormsModule
+      ],
+      declarations: [NewCategoryComponent],
+      providers: [
+        { provide: MatDialogRef, useValue: dialogRefSpy },
+        { provide: MAT_DIALOG_DATA, useValue: null }
+      ]
     });
     fixture = TestBed.createComponent(NewCategoryComponent);
     component = fixture.componentInstance;

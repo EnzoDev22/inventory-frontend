@@ -41,5 +41,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Local environment files
 /src/environments/environment.local.ts
