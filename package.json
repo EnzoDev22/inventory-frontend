@@ -21,7 +21,6 @@
     "@angular/platform-browser-dynamic": "^19.2.25",
     "@angular/router": "^19.2.25",
     "chart.js": "^4.5.1",
-    "keycloak-angular": "^19.0.2",
     "keycloak-js": "^25.0.6",
     "ng2-charts": "^5.0.4",
     "rxjs": "~7.8.0",
