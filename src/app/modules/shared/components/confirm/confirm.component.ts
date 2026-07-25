@@ -4,9 +4,10 @@ import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 
 @Component({
-  selector: 'app-confirm',
-  templateUrl: './confirm.component.html',
-  styleUrls: ['./confirm.component.css']
+    selector: 'app-confirm',
+    templateUrl: './confirm.component.html',
+    styleUrls: ['./confirm.component.css'],
+    standalone: false
 })
 
 export class ConfirmComponent implements OnInit {

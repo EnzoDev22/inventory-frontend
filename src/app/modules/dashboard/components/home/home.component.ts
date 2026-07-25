@@ -4,9 +4,10 @@ import { ProductElement } from 'src/app/modules/product/product/product.componen
 import { ProductService } from 'src/app/modules/shared/services/product.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    standalone: false
 })
 export class HomeComponent implements OnInit {
   
