@@ -4,8 +4,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 
 @Component({
-  selector: 'app-sidenav',
-  template: ''
+    selector: 'app-sidenav',
+    template: '',
+    standalone: false
 })
 class SidenavStubComponent {}
 

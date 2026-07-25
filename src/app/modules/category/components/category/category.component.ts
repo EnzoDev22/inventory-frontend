@@ -9,9 +9,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { UtilService } from 'src/app/modules/shared/services/util.service';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+    selector: 'app-category',
+    templateUrl: './category.component.html',
+    styleUrls: ['./category.component.css'],
+    standalone: false
 })
 
 export class CategoryComponent implements OnInit {

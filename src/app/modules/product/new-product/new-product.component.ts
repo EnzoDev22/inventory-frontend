@@ -5,9 +5,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductService } from '../../shared/services/product.service';
 
 @Component({
-  selector: 'app-new-product',
-  templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.css']
+    selector: 'app-new-product',
+    templateUrl: './new-product.component.html',
+    styleUrls: ['./new-product.component.css'],
+    standalone: false
 })
 export class NewProductComponent implements OnInit {
 

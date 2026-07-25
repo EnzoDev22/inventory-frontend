@@ -4,9 +4,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CategoryService } from 'src/app/modules/shared/services/category.service';
 
 @Component({
-  selector: 'app-new-category',
-  templateUrl: './new-category.component.html',
-  styleUrls: ['./new-category.component.css']
+    selector: 'app-new-category',
+    templateUrl: './new-category.component.html',
+    styleUrls: ['./new-category.component.css'],
+    standalone: false
 })
 export class NewCategoryComponent implements OnInit{
 

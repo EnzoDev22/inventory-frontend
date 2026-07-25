@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule, inject, provideAppInitializer } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {environment} from 'src/environments/environment.local';
 
@@ -41,12 +41,10 @@ function initializeKeycloak(keycloak: KeycloakService) {
     NgChartsModule
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService]
-    }
+    provideAppInitializer(() => {
+        const initializerFn = (initializeKeycloak)(inject(KeycloakService));
+        return initializerFn();
+      })
   ],
   bootstrap: [AppComponent]
 })
