@@ -1,10 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from '../../material.module';
 import { ConfirmComponent } from './confirm.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('ConfirmComponent', () => {
   let component: ConfirmComponent;
@@ -14,17 +15,16 @@ describe('ConfirmComponent', () => {
     const dialogRefSpy = jasmine.createSpyObj('MatDialogRef', ['close']);
 
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-        MaterialModule,
-        NoopAnimationsModule
-      ],
-      declarations: [ConfirmComponent],
-      providers: [
+    declarations: [ConfirmComponent],
+    imports: [MaterialModule,
+        NoopAnimationsModule],
+    providers: [
         { provide: MatDialogRef, useValue: dialogRefSpy },
-        { provide: MAT_DIALOG_DATA, useValue: null }
-      ]
-    });
+        { provide: MAT_DIALOG_DATA, useValue: null },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
     fixture = TestBed.createComponent(ConfirmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
