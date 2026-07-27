@@ -1,6 +1,6 @@
 import { NgModule, inject, provideAppInitializer } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {environment} from 'src/environments/environment.local';
+import { environment } from 'src/environments/environment';
 
 import { KeycloakAngularModule, KeycloakService } from "keycloak-angular";
 
