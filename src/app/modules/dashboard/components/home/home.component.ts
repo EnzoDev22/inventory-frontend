@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import Chart from 'chart.js/auto';
 import { ProductElement } from 'src/app/modules/product/product/product.component';
 import { ProductService } from 'src/app/modules/shared/services/product.service';
 
