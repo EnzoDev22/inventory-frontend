@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { KeycloakService } from 'keycloak-angular';
+import Keycloak from 'keycloak-js';
 
 import { UtilService } from './util.service';
 
@@ -7,16 +7,18 @@ describe('UtilService', () => {
   let service: UtilService;
 
   beforeEach(() => {
-    const keycloakServiceSpy = jasmine.createSpyObj('KeycloakService', [
-      'getUserRoles'
-    ]);
-    keycloakServiceSpy.getUserRoles.and.returnValue([]);
+    const keycloakMock = {
+      realmAccess: {
+        roles: []
+      },
+      resourceAccess: {}
+    };
 
     TestBed.configureTestingModule({
       providers: [
         {
-          provide: KeycloakService,
-          useValue: keycloakServiceSpy
+          provide: Keycloak,
+          useValue: keycloakMock
         }
       ]
     });
@@ -25,5 +27,12 @@ describe('UtilService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should identify an admin role', () => {
+    const keycloak = TestBed.inject(Keycloak);
+    keycloak.realmAccess = { roles: ['admin'] };
+
+    expect(service.isAdmin()).toBeTrue();
   });
 });
