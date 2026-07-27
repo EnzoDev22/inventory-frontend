@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { KeycloakService } from 'keycloak-angular';
+import Keycloak from 'keycloak-js';
 
 import { MaterialModule } from '../../material.module';
 import { SidenavComponent } from './sidenav.component';
@@ -11,11 +11,12 @@ describe('SidenavComponent', () => {
   let fixture: ComponentFixture<SidenavComponent>;
 
   beforeEach(() => {
-    const keycloakServiceSpy = jasmine.createSpyObj('KeycloakService', [
-      'getUsername',
-      'logout'
-    ]);
-    keycloakServiceSpy.getUsername.and.returnValue('test-user');
+    const keycloakMock = {
+      tokenParsed: {
+        preferred_username: 'test-user'
+      },
+      logout: jasmine.createSpy('logout')
+    };
 
     TestBed.configureTestingModule({
       imports: [
@@ -26,8 +27,8 @@ describe('SidenavComponent', () => {
       declarations: [SidenavComponent],
       providers: [
         {
-          provide: KeycloakService,
-          useValue: keycloakServiceSpy
+          provide: Keycloak,
+          useValue: keycloakMock
         }
       ]
     });
@@ -38,5 +39,9 @@ describe('SidenavComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display the username from the token', () => {
+    expect(component.username).toBe('test-user');
   });
 });

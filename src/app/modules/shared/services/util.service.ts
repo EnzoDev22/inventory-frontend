@@ -1,27 +1,23 @@
 import { inject, Injectable } from '@angular/core';
-import { KeycloakService } from 'keycloak-angular';
+import Keycloak from 'keycloak-js';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class UtilService {
+  private readonly keycloak = inject(Keycloak);
 
-  private keycloakService = inject(KeycloakService);
+  getRoles(): string[] {
+    const resourceRoles = Object.values(
+      this.keycloak.resourceAccess ?? {}
+    ).flatMap(access => access.roles ?? []);
+    const realmRoles = this.keycloak.realmAccess?.roles ?? [];
 
-  constructor() { }
-
-  getRoles(){
-    return this.keycloakService.getUserRoles();
+    return [...resourceRoles, ...realmRoles];
   }
 
-  isAdmin(){
-    let roles = this.getRoles().filter( role => role == "admin");
-    
-    if(roles.length > 0){
-      return true;
-    }else{
-      return false;
-    }
+  isAdmin(): boolean {
+    return this.getRoles().includes('admin');
   }
 }
