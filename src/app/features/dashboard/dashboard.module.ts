@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './pages/dashboard.component';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
-import { CategoryModule } from '../category/category.module';
-import { ProductModule } from '../product/product.module';
-import { MaterialModule } from '../shared/material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { CategoryModule } from '../categories/category.module';
+import { ProductModule } from '../products/product.module';
+import { MaterialModule } from 'src/app/shared/material.module';
 
 
 

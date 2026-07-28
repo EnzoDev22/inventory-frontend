@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardRoutingModule } from './modules/dashboard/dashboard-routing.module';
+import { DashboardRoutingModule } from './features/dashboard/dashboard-routing.module';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
