@@ -1,12 +1,12 @@
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProductService } from '../../shared/services/product.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { NewProductComponent } from '../new-product/new-product.component';
-import { ConfirmComponent } from '../../shared/components/confirm/confirm.component';
-import { UtilService } from '../../shared/services/util.service';
+import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
+import { UtilService } from 'src/app/shared/services/util.service';
 
 @Component({
     selector: 'app-product',

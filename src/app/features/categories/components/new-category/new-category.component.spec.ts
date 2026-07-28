@@ -4,19 +4,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MaterialModule } from '../../shared/material.module';
-import { NewProductComponent } from './new-product.component';
+import { MaterialModule } from 'src/app/shared/material.module';
+import { NewCategoryComponent } from './new-category.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
-describe('NewProductComponent', () => {
-  let component: NewProductComponent;
-  let fixture: ComponentFixture<NewProductComponent>;
+describe('NewCategoryComponent', () => {
+  let component: NewCategoryComponent;
+  let fixture: ComponentFixture<NewCategoryComponent>;
 
   beforeEach(() => {
     const dialogRefSpy = jasmine.createSpyObj('MatDialogRef', ['close']);
 
     TestBed.configureTestingModule({
-    declarations: [NewProductComponent],
+    declarations: [NewCategoryComponent],
     imports: [MaterialModule,
         NoopAnimationsModule,
         ReactiveFormsModule],
@@ -27,7 +27,7 @@ describe('NewProductComponent', () => {
         provideHttpClientTesting()
     ]
 });
-    fixture = TestBed.createComponent(NewProductComponent);
+    fixture = TestBed.createComponent(NewCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,18 +2,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MaterialModule } from '../../../shared/material.module';
-import { UtilService } from '../../../shared/services/util.service';
-import { CategoryComponent } from './category.component';
+import { MaterialModule } from 'src/app/shared/material.module';
+import { UtilService } from 'src/app/shared/services/util.service';
+import { ProductComponent } from './product.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
-describe('CategoryComponent', () => {
-  let component: CategoryComponent;
-  let fixture: ComponentFixture<CategoryComponent>;
+describe('ProductComponent', () => {
+  let component: ProductComponent;
+  let fixture: ComponentFixture<ProductComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    declarations: [CategoryComponent],
+    declarations: [ProductComponent],
     imports: [MaterialModule,
         NoopAnimationsModule],
     providers: [
@@ -25,7 +25,7 @@ describe('CategoryComponent', () => {
         provideHttpClientTesting()
     ]
 });
-    fixture = TestBed.createComponent(CategoryComponent);
+    fixture = TestBed.createComponent(ProductComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

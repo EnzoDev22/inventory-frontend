@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
-import { ProductElement } from 'src/app/modules/product/product/product.component';
-import { ProductService } from 'src/app/modules/shared/services/product.service';
+import { ProductElement } from 'src/app/features/products/product/product.component';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
     selector: 'app-home',
